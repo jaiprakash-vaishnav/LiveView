@@ -1,0 +1,44 @@
+/* BACKGROUND */
+.notfound-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* CONTENT */
+.content h1 {
+  font-size: 120px;
+  margin: 0;
+}
+
+.content h2 {
+  font-size: 32px;
+  margin: 10px 0;
+}
+
+.content p {
+  font-size: 16px;
+  color: #ddd;
+  margin-bottom: 30px;
+}
+
+/* BUTTONS */
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  width: 200px;
+}
+
+/* PRIMARY BUTTON */
+.primary {
+  background: linear-gradient(90deg, #ff7a18, #ffb347);
+  color: white;
+}

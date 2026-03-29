@@ -1,0 +1,131 @@
+.logOut {
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 10% !important;
+  background: linear-gradient(90deg, #ff7a18, #ffb347);
+  color: white;
+  padding: 14px 28px;
+  font-size: 14px;
+  width: 150px;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 20px;
+  text-align: center;
+}
+
+.leftPanel {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.element {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.rightPanel {
+  display: flex;
+  align-items: center;
+}
+
+.rightPanel > img {
+  width: 40vw;
+  height: auto;
+  border-radius: 20px;
+}
+
+.meetContainer {
+  display: flex;
+  padding-inline: 20px;
+  height: 80vh;
+  gap: 10vw;
+  justify-content: center;
+}
+
+.meetCode {
+  background-color: white;
+  border-radius: 5px;
+}
+
+/* ================= MOBILE (<=768px) ================= */
+@media (max-width: 768px) {
+  /* NAVBAR */
+  .navBar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .logOut {
+    width: 100px;
+    padding: 10px;
+    font-size: 12px;
+    margin: 0 !important;
+  }
+
+  /* MAIN CONTAINER */
+  .meetContainer {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+    padding: 10px;
+  }
+  
+
+  /* LEFT PANEL */
+  .leftPanel {
+    width: 100%;
+    text-align: center;
+  }
+
+  .element {
+    flex-direction: column;
+     align-items: center;  
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  /* INPUT + BUTTON */
+  .meetCode {
+    width: 100% !important;
+    max-width: 250px;
+  }
+
+  /* IMAGE (REMOVE DISTRACTION) */
+  .rightPanel {
+    display: none;
+  }
+  .leftPanel h2 {
+    text-align: center;
+    line-height: 1.4;
+  }
+  .element button {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 25px;
+  }
+}
+
+/* ================= TABLET (769px - 1024px) ================= */
+@media (max-width: 1024px) {
+  .meetContainer {
+    flex-direction: column;
+    height: auto;
+    gap: 30px;
+  }
+
+  .rightPanel > img {
+    width: 60vw;
+  }
+
+  .element {
+    justify-content: center;
+  }
+}
