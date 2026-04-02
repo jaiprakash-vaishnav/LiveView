@@ -37,7 +37,7 @@ function Authentication() {
   let handleAuth = async () => {
     try {
       if(validateInput(username) || validateInput(password)){
-        toast.error("Input length atleast 6 to 12.")
+        toast.error("username and password length atleast 6 characters.")
         return;
       }
       if (formState === 0) {
@@ -46,7 +46,7 @@ function Authentication() {
       }
       if (formState === 1) {
         if(validateInput(name)){
-          toast.error("Input length atleast 6 to 12.")
+          toast.error("Full name length atleast 6 characters.")
           return;
         }
         let result = await handleRegister(name, username, password);

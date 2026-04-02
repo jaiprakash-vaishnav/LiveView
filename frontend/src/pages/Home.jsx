@@ -1,7 +1,7 @@
 import WithAuth from "../utils/WithAuth.jsx";
 import { IconButton, Button, TextField } from "@mui/material";
 import { Restore } from "@mui/icons-material";
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 import { AuthContext } from "../contexts/AuthContext.jsx";
@@ -37,11 +37,13 @@ function Home() {
       toast.error(message);
     }
   };
-  const hasToastShown = useRef(false);
+  const toastMessage = ()=>{
+    toast.success("Welcome to LiveView Video call");
+  }
   useEffect(() => {
-    if (!hasToastShown.current) {
-      toast.success("Welcome to LiveView Video call");
-      hasToastShown.current = true; // Mark as shown
+    toastMessage();
+    return () => {
+      toast.dismiss();
     }
   }, []);
   return (

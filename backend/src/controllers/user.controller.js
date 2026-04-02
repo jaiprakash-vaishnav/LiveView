@@ -1,15 +1,15 @@
 import httpStatus from "http-status";
 import { User } from "../models/user.model.js";
 import bcrypt from "bcrypt";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 import crypto from "crypto";
 import { Meeting } from "../models/meeting.model.js";
 const login = async (req, res) => {
   const { username, password } = req.body;
 
-  if (!username || !password) {
-    return res.status(400).json({ message: "Please Provide" });
+  if (!username || !password || username.length < 6 || password.length < 6) {
+    return res.status(400).json({ message: "Please Provide Valid Input" });
   }
 
   try {
@@ -40,7 +40,9 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
   const { name, username, password } = req.body;
-
+  if (!username || !password || username.length < 6 || password.length < 6) {
+    return res.status(400).json({ message: "Please Provide Valid Input" });
+  }
   try {
     const existingUser = await User.findOne({ username });
     if (existingUser) {
@@ -79,13 +81,18 @@ const getUserHistory = async (req, res) => {
 
 const addToHistory = async (req, res) => {
   const { token, meetingCode } = req.body;
-  if(!token || !meetingCode){
-    return res.status(httpStatus.NOT_FOUND).json({ message: "Meeting not found" });
+  if (!token || !meetingCode) {
+    return res
+      .status(httpStatus.NOT_FOUND)
+      .json({ message: "Meeting not found" });
   }
   try {
     const user = await User.findOne({ token: token });
-    const isMeeting = await Meeting.findOne({meetingCode : meetingCode});
-    if(!isMeeting) return res.status(httpStatus.NOT_FOUND).json({ message: "Meeting not found" });
+    const isMeeting = await Meeting.findOne({ meetingCode: meetingCode });
+    if (!isMeeting)
+      return res
+        .status(httpStatus.NOT_FOUND)
+        .json({ message: "Meeting not found" });
     const meeting = new Meeting({
       user_id: user.username,
       meetingCode: meetingCode,
@@ -103,28 +110,39 @@ const createMeeting = async (req, res) => {
   const { token } = req.body;
   try {
     const user = await User.findOne({ token: token });
-    const meetingCode = uuidv4().substring(0,8);
+    const meetingCode = uuidv4().substring(0, 8);
     const newMeeting = new Meeting({
       user_id: user.username,
       meetingCode: meetingCode,
     });
 
     await newMeeting.save();
-    res.status(httpStatus.CREATED).json({ meetingCode : meetingCode});
+    res.status(httpStatus.CREATED).json({ meetingCode: meetingCode });
   } catch (error) {
-    res.status(httpStatus.NOT_FOUND).json({ message: `Something went wrong ${e}` });
+    res
+      .status(httpStatus.NOT_FOUND)
+      .json({ message: `Something went wrong ${e}` });
   }
 };
 
-const getUserName = async(req,res)=>{
-  const {token} = req.body;
+const getUserName = async (req, res) => {
+  const { token } = req.body;
   try {
     const user = await User.findOne({ token: token });
     console.log(user.username);
-    res.status(httpStatus.OK).json({ username : user.username});
+    res.status(httpStatus.OK).json({ username: user.username });
   } catch (error) {
-    res.status(httpStatus.NOT_FOUND).json({ message: `Something went wrong ${e}` });
+    res
+      .status(httpStatus.NOT_FOUND)
+      .json({ message: `Something went wrong ${e}` });
   }
-}
+};
 
-export { login, register, getUserHistory, addToHistory, createMeeting, getUserName };
+export {
+  login,
+  register,
+  getUserHistory,
+  addToHistory,
+  createMeeting,
+  getUserName,
+};

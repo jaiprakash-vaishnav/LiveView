@@ -6,7 +6,7 @@ Full stack Video call Platform
 
 Developed a real-time video calling web application that allows users to create and join meetings instantly, featuring live video streaming, chat functionality, and responsive UI for a seamless communication experience.
 
-🔗 [Live](https://liveview-t6v0.onrender.com)
+🔗 [Live](https://live-view-xi.vercel.app)
 
 ## 🚀 Getting Started
 
