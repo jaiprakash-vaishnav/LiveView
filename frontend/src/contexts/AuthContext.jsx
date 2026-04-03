@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
   };
   const getHistoryOfUser = async () => {
     try {
-      let request = await client.get("/get_all_activity", {
+      let request = await client.get("/activity", {
         params:{
           token : localStorage.getItem("token")
         }
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
 
   const addToUserHistory = async (meetingCode)=>{
     try {
-      let request = await client.post("/add_to_activity", {
+      let request = await client.post("/activity", {
         token : localStorage.getItem("token"),
         meetingCode : meetingCode
       });
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
 
   const createMeeting = async ()=>{
     try {
-      let request = await client.post("/createMeeting", {
+      let request = await client.post("/meeting", {
         token : localStorage.getItem("token")
       });
       return request;
@@ -84,7 +84,7 @@ export const AuthProvider = ({ children }) => {
 
   const getUserName = async ()=>{
      try {
-      let request = await client.post("/getusername", {
+      let request = await client.post("/user", {
         token : localStorage.getItem("token")
       });
       return request;
