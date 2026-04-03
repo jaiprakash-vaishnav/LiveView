@@ -37,15 +37,15 @@ function Home() {
       toast.error(message);
     }
   };
-  // const toastMessage = ()=>{
-  //   toast.success("Welcome to LiveView Video call");
-  // }
-  // useEffect(() => {
-  //   toastMessage();
-  //   return () => {
-  //     toast.dismiss();
-  //   }
-  // }, []);
+  const toastMessage = ()=>{
+    toast.success("Welcome to LiveView Video call");
+  }
+  useEffect(() => {
+    toastMessage();
+    return () => {
+      toast.dismiss();
+    }
+  }, []);
   return (
     <div>
       <Toaster position="top-center" />
