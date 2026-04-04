@@ -701,8 +701,9 @@ function VideoMeet() {
           ></video>
           <div className={styles.conferenceView}>
             {videos.map((video) => (
-              <div onClink={()=>setZoom1(!zoom1)} style={zoom1 ? sty : {}} key={video.socketId}>
+              <div key={video.socketId}>
                 <video
+                  onClink={()=>setZoom1(!zoom1)} style={zoom1 ? sty : ""}
                   data-socket={video.socketId}
                   ref={(ref) => {
                     if (ref && video.stream) {
