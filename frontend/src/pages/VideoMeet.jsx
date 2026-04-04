@@ -50,7 +50,7 @@ function VideoMeet() {
   let [newMessages, setNewMessages] = useState(0);
 
   let [askForUsername, setAskForUsername] = useState(true);
-
+  let [zoom1, setZoom1] = useState(false);
   const { getUserName } = useContext(AuthContext);
   let [username, setUsername] = useState("");
   useEffect(() => {
@@ -577,7 +577,10 @@ function VideoMeet() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
+  let sty = {
+      height : "60%",
+      width : "auto"
+  };
   return (
     <div>
       <Toaster position="top-center" />
@@ -698,7 +701,7 @@ function VideoMeet() {
           ></video>
           <div className={styles.conferenceView}>
             {videos.map((video) => (
-              <div key={video.socketId}>
+              <div onClink={()=>setZoom1(!zoom1)} style={zoom1 ? sty : {}} key={video.socketId}>
                 <video
                   data-socket={video.socketId}
                   ref={(ref) => {
