@@ -577,10 +577,6 @@ function VideoMeet() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-  let sty = {
-      height : "50rem",
-      width : "auto"
-  };
   return (
     <div>
       <Toaster position="top-center" />
@@ -701,7 +697,7 @@ function VideoMeet() {
           ></video>
           <div className={styles.conferenceView}>
             {videos.map((video) => (
-              <div key={video.socketId}  onClink={()=>setZoom1(!zoom1)} style={zoom1 ? sty : ""}>
+              <div key={video.socketId} >
                 <video
                   data-socket={video.socketId}
                   ref={(ref) => {
