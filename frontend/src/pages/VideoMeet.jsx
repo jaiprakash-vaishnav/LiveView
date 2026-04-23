@@ -505,11 +505,6 @@ function VideoMeet() {
     getMedia();
   };
 
-  //TODO: check if browser is chrome
-  // if(isChrome() === false){
-  //     alert("Please use Chrome browser for better experience");
-  // }
-
   let handleVideo = () => {
     setVideo(!video);
   };
@@ -699,6 +694,8 @@ function VideoMeet() {
             {videos.map((video) => (
               <div key={video.socketId} >
                 <video
+                  controls
+                  style={{objectFit: "contain"}}
                   data-socket={video.socketId}
                   ref={(ref) => {
                     if (ref && video.stream) {
