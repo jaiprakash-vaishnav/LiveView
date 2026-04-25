@@ -536,7 +536,20 @@ function VideoMeet() {
     setMessage("");
   };
 
-  let handleEndCall = () => {
+  let handleEndCall = async (event) => {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
     try {
       let tracks = localVideoRef.current.srcObject.getTracks();
       tracks.forEach((track) => track.stop());
@@ -559,7 +572,7 @@ function VideoMeet() {
     } catch (error) {
       console.log(error);
     }
-    routeTo("/home");
+    routeTo("/home", { replace: true });
   };
 
   const [copied, setCopied] = useState(false);
@@ -694,7 +707,6 @@ function VideoMeet() {
             {videos.map((video) => (
               <div key={video.socketId} >
                 <video
-                  controls
                   style={{objectFit: "contain"}}
                   data-socket={video.socketId}
                   ref={(ref) => {

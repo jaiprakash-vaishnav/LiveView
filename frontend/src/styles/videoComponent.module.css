@@ -155,7 +155,8 @@
   /* CHAT (FULL SCREEN OVERLAY) */
   .chatRoom {
     width: 100vw;
-    height: 100vh;
+    z-index: 1;
+    /* height: 100vh; */
     border-radius: 0;
     bottom: 15%;
     right: 0;
@@ -191,7 +192,8 @@
   }
 
   .chatRoom {
-    width: 40vw;
+    width: 100vw;
+    z-index: 1;
   }
 
   .buttonContainers svg {
