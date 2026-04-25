@@ -39,7 +39,7 @@ function VideoMeet() {
 
   let [screen, setScreen] = useState();
 
-  let [showModel, setShowModel] = useState(true);
+  let [showModel, setShowModel] = useState(false);
 
   let [screenAvailable, setScreenAvailable] = useState();
 
